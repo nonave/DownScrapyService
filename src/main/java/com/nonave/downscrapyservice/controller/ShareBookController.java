@@ -42,6 +42,7 @@ public class ShareBookController {
 	@PostMapping
 	public ResponseEntity<Scrap> createScrap(@RequestBody ScrapRequest scrapRequest) {
 		Scrap s = new Scrap();
+		s.setName(scrapRequest.getName());
 		scrapDao.save(s);
 		return ResponseEntity.ok(s);
 	}
