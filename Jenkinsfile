@@ -48,7 +48,6 @@ pipeline {
   post {
     success {
       slackSend(color: 'good', channel:'nonave', message: "${env.JOB_NAME} - ${env.BUILD_DISPLAY_NAME} - Funcionó correctamente")
-      slackSend(color: 'good', channel:'nonave', message: "${env.JOB_NAME} - ${env.BUILD_DISPLAY_NAME} - Funcionó correctamente (only jenkins)")
     }
     failure {
       slackSend(color: 'danger', channel:'nonave', message: "${env.JOB_NAME} - ${env.BUILD_DISPLAY_NAME} - Hubo un problema con el deploy")
