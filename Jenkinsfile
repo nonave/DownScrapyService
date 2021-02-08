@@ -2,6 +2,7 @@ pipeline {
   agent any
   environment {
     name = 'davidperez01/downscrapyservice'
+    channel = 'desarrollo'
   }
   stages {
     stage('Clone') {
@@ -47,12 +48,10 @@ pipeline {
   }
   post {
     success {
-      slackSend(color: 'good', channel:'nonave', message: "${env.JOB_NAME} - ${env.BUILD_DISPLAY_NAME} - Funcionó correctamente")
-      slackSend(color: 'good', channel:'desarrollo', message: "${env.JOB_NAME} - ${env.BUILD_DISPLAY_NAME} - Funcionó correctamente")
+      slackSend(color: "good", channel:"${channel}", message: "${env.JOB_NAME} - ${env.BUILD_DISPLAY_NAME} - Funcionó correctamente")
     }
     failure {
-      slackSend(color: 'danger', channel:'nonave', message: "${env.JOB_NAME} - ${env.BUILD_DISPLAY_NAME} - Hubo un problema con el deploy")
-      slackSend(color: 'good', channel:'desarrollo', message: "${env.JOB_NAME} - ${env.BUILD_DISPLAY_NAME} - Funcionó correctamente")
+      slackSend(color: "danger", channel:"${channel}", message: "${env.JOB_NAME} - ${env.BUILD_DISPLAY_NAME} - Hubo un problema con el deploy")
     }
   }
 }
