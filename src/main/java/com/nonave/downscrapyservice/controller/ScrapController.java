@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestController
 @RequestMapping(path = "/scrap")
-public class ShareBookController {
+public class ScrapController {
 
 	@Autowired
 	private ScrapDao scrapDao;
@@ -46,7 +46,5 @@ public class ShareBookController {
 		scrapDao.save(s);
 		return ResponseEntity.ok(s);
 	}
-	
-	// algo
 	
 }
